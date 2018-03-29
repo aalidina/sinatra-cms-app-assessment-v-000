@@ -13,5 +13,5 @@ end
 use Rack::MethodOverride
 
 use UserController
-use CurrencyNameController
+use CurrencyController
 run ApplicationController
