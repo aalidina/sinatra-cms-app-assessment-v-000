@@ -1,9 +1,13 @@
 require 'pry'
 class UserController < ApplicationController
 
+  get "/index" do
+    erb :index
+  end
+
   get '/login' do
     if logged_in?
-      redirect to '/'
+      redirect to '/index'
     else
       erb :'/users/login'
     end
@@ -22,7 +26,7 @@ class UserController < ApplicationController
   get '/signup' do
 
     if logged_in?
-      redirect to'/'
+      redirect to'/index'
     else
       erb :'/users/signup'
     end
