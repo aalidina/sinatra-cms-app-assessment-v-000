@@ -1,7 +1,9 @@
 require 'pry'
 
 class CurrencyController < ApplicationController
-  get '/currency/new' do
 
+  get '/all' do
+    
   end
+
 end

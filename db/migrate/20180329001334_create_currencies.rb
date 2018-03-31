@@ -3,6 +3,7 @@ class CreateCurrencies < ActiveRecord::Migration[5.1]
     create_table :currencies do |t|
         t.string :name
         t.integer :price
+        t.integer :user_id
     end
   end
 
