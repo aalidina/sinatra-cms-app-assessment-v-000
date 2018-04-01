@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Crypto Currency</title>
+  </head>
+  <body>
+    <form action="/currencies/index" method="post" name="checkbox_form">
+      <div class="bitcoin">
+        <h1>Select Crypto Currency to List</h1>
+        <% @currency.each do |currency,price| %>
+          <p>Currency Name: <%= currency.name %> Currency Price: $<%= currency.price %> <input type="checkbox" name="crypto_currency[]" id="crypto_id">
+        <% end %>
+        <br></br>
+          <input type="submit" value="Add to List">
+      </div>
+
+    </form>
+
+  </body>
+</html>

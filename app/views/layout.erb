@@ -15,7 +15,18 @@
 </head>
 <body>
   <div class="wrapper">
+    <nav>
+      <% if logged_in? %>
+        <p>Welcome, <%=current_user.username %></p><br>
+        <button type="button" name="button"><a href="/show">Holdings</a></button>
+        <button type="button" name="button"><a href="/logout">Log Out</a></button>
+      <% else %>
+        <h3>Welcome to my Sinatra Project</h3>
+        <button type="button" name="button"><a href="/signup">Sign Up</a></button>
+        <button type="button" name="button"><a href="/login"> Sign In </a></button>
+      <%end %>
 
+    </nav>
       <%= yield %>
 
     <footer class="branding">

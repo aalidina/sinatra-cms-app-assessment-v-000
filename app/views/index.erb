@@ -8,7 +8,7 @@
     <form class="" action="/show" method="post">
       <div class="bitcoin">
           <% @currency.each do |currency,price| %>
-            <p>Currency Name: <%= currency.name %> Currency Price: $<%= currency.price %> <input type="checkbox" value="Select"> <button type="button" name="button"><a href="#">Add</a></button></p>
+            <p>Currency Name: <%= currency.name %> Currency Price: $<%= currency.price %> 
           <% end %>
       </div>
 
