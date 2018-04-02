@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form class="" action="/currencies" method="post">
+      <%@currency.each do |currency|%>
+<!-- creating a params hash such that the array of currency IDs is stored inside the "user" hash -->
+        <p> <input type="checkbox" name="currency[name]" value="<%=currency.name%><%=currency.price%>" id="<%=currency.id%>"> <%=currency.name%> <%=currency.price%> </input></p>
+      <%end%>
+      <input type="submit" name="" value="Add to List">
+    </form>
+  </body>
+</html>

@@ -6,10 +6,13 @@
   </head>
   <body>
     <form action="/currencies/index" method="post" name="checkbox_form">
+      <input type="hidden" name="_method" value="patch"> <!--using hidden patch input to make this a patch request -->
       <div class="bitcoin">
         <h1>Select Crypto Currency to List</h1>
         <% @currency.each do |currency,price| %>
-          <p>Currency Name: <%= currency.name %> Currency Price: $<%= currency.price %> <input type="checkbox" name="crypto_currency[]" id="crypto_id">
+        <div class="checkbox">
+           Currency Name: <%= currency.name %> Currency Price: $<%= currency.price %> <input type="checkbox" name="crypto_currency[]" id="crypto_id">
+        </div>
         <% end %>
         <br></br>
           <input type="submit" value="Add to List">
