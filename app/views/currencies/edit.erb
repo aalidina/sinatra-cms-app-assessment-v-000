@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form class="/currencies/<%=currency.id>" action="index.html" method="post">
+      <%@crypto.all.each do |currency,price|%>
+        <%=@crypto.name%> <%=@crypto.price%>
+      <%end%>
+    </form>
+  </body>
+</html>

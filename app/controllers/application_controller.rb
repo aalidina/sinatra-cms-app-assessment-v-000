@@ -20,11 +20,11 @@ class ApplicationController < Sinatra::Base
       #   redirect "/login?error=You have to be logged in to do that"
       # end
       #'cache' the user instance into an instance variable
-      @current_user ||= User.find(session[:id]) if session[:id]
+      User.find(session[:user_id])
     end
 
     def logged_in?
-      !!current_user
+      !!session[:user_id]
     end
 
   end

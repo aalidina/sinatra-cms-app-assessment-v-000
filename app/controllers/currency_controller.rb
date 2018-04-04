@@ -1,7 +1,7 @@
 require 'pry'
 
 class CurrencyController < ApplicationController
-
+  @crypto = []
   get '/currencies' do
     @currency = Currency.all
     erb :'/currencies/index'
@@ -13,7 +13,14 @@ class CurrencyController < ApplicationController
   end
 
   post '/currencies' do
-    binding.pry
+     @crypto = Currency.find_by(params["id"])
+    # @crypto = Currency.find(params.fetch("id").to_i)
+    redirect "/show"
+  end
+
+  get '/show' do
+    @crypto = Currency.find_by(params["id"])
+    erb :'/currencies/show'
   end
 
 
