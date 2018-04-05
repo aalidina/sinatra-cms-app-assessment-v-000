@@ -1,9 +1,9 @@
 require 'pry'
 
 class CurrencyController < ApplicationController
-  @crypto = []
+
   get '/currencies' do
-    @currency = Currency.all
+    @owners = Owner.all
     erb :'/currencies/index'
   end
 
@@ -13,45 +13,15 @@ class CurrencyController < ApplicationController
   end
 
   post '/currencies' do
-     @crypto = Currency.find_by(params["id"])
-    # @crypto = Currency.find(params.fetch("id").to_i)
-    redirect "/show"
+    #getting the data from the form and saving it in a istance variable
+     @crypto = Currency.find(params["currency"]["currency_ids"])
+    redirect to "currencies/#{currency_ids}" #redirect to show route to show user the selection on show #page
   end
 
-  get '/show' do
-    @crypto = Currency.find_by(params["id"])
-    erb :'/currencies/show'
+  get '/currencies/:currency_ids/edit' do
+    @crypto = Currency.find(params["currency"]["currency_ids"])
+    erb :'/currencies/edit'
   end
-
-
-  # get '/list' do
-  #   @currency = Currency.all
-  #   if logged_in?
-  #     erb :'/currencies/index'
-  #   else
-  #     redirect '/login'
-  #   end
-  # end
-  #
-  # post '/list' do
-  #   name = params.fetch("name")
-  #   redirect '/show'
-  # end
-  #
-  # patch '/list/:id' do
-  #
-  # end
-
-  # get '/lists/:list_id' do
-  #   @currency = Currency.all
-  #   @currency.index { |l| l.id == params[:crypto_id].to_i }
-  #   erb :show
-  # end
-  #
-  # post '/list' do
-  #    Currency.create(:name => params[:list][:name], :price => params[:price][:name] )
-  #    redirect '/list'
-  # end
 
 
 end
