@@ -5,10 +5,17 @@
     <title>Crypto Currency</title>
   </head>
   <body>
-    <form action="/show" method="post" name="new_task">
-      <% @crypto.each do |currency|%>
-        <%=currency.name%> <%=currency.price%>
-      <%end%>
-    </form>
+    <h1>Currency Holding</h1>
+    <div class="row">
+      <form action="/show" method="post" name="new_task">
+        <% @crypto.each do |currency, price|%>
+          <table>
+            <tr>
+              <td>Currency Name: <%=currency.name%></td> <td>Currency Price: $ <%=currency.price%></td>
+            </tr>
+          </table>
+        <%end%>
+      </form>
+    </div>
   </body>
 </html>
