@@ -2,8 +2,11 @@ require 'pry'
 
 class CurrencyController < ApplicationController
 
+  get '/currencies/index' do
+    erb :'/currencies/index'
+  end
+
   get '/currencies' do
-    @owners = Owner.all
     erb :'/currencies/index'
   end
 
@@ -18,11 +21,13 @@ class CurrencyController < ApplicationController
   end
 
   get '/show' do
+    @crypto = Currency.find(params["currency"]["currency_ids"])
     erb :'/currencies/show'
   end
 
   post '/show' do
     @crypto = Currency.find(params["currency"]["currency_ids"])
+    binding.pry
     erb :'/currencies/show'
   end
 

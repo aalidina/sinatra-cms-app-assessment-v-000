@@ -1,13 +1,11 @@
 require 'pry'
 class UserController < ApplicationController
 
-  get "/index" do
-    erb :index
-  end
+
 
   get '/login' do
     if logged_in?
-      redirect to '/currencies/index'
+      redirect to '/currencies/new'
     else
       erb :'/users/login'
     end
@@ -17,16 +15,15 @@ class UserController < ApplicationController
     @user = User.find_by(:username => params[:username])
     if @user && @user.authenticate(params[:password])
       session[:id] = @user.id
-      redirect to '/'
+      redirect '/currencies/new'
     else
       redirect to '/login'
     end
   end
 
   get '/signup' do
-
     if logged_in?
-      redirect to'/currencies/new'
+      redirect to '/currencies/new'
     else
       erb :'/users/signup'
     end

@@ -6,14 +6,12 @@
   </head>
   <body>
     <h1>Currency Holding</h1>
+    <nav>
+    </nav>
     <div class="row">
       <form action="/show" method="post" name="new_task">
         <% @crypto.each do |currency, price|%>
-          <table>
-            <tr>
-              <td>Currency Name: <%=currency.name%></td> <td>Currency Price: $ <%=currency.price%></td>
-            </tr>
-          </table>
+          <p> Currency Name: <%=currency.name%> Currency Price: $ <%=currency.price%> </p>
         <%end%>
       </form>
     </div>
