@@ -21,13 +21,23 @@ class CurrencyController < ApplicationController
   end
 
   get '/show' do
-    @crypto = Currency.find(params["currency"]["currency_ids"])
+    @crypto = Currency.find(params["currency_id"])
     erb :'/currencies/show'
   end
 
   post '/show' do
-    @crypto = Currency.find(params["currency"]["currency_ids"])
-    binding.pry
+    @crypto = Currency.find(params["currency_id"])
+    erb :'/currencies/show'
+  end
+
+  get '/delete' do
+  erb :'/currencies/show'
+  end
+
+  post '/delete' do
+    @crypto = Currency.find(params["currency_id"])
+    @delete = params.fetch("currency_id")
+    @delete.to_i
     erb :'/currencies/show'
   end
 

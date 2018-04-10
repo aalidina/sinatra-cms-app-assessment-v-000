@@ -5,12 +5,11 @@
     <title></title>
   </head>
   <body>
-    <h1>Welcome</h1>
     <form class="" action="/show" method="post">
       <!-- iterating over the currency array from the seed database-->
       <% @currency.each do |currency| %>
       <p>  Currency Price: <%=currency.name%> Currency Price: $
-         <%=currency.price%> <input type="checkbox" name="currency[currency_ids][]" value="<%=currency.id%>" id="<%=currency.id%>"> </input>
+         <%=currency.price%> <input type="checkbox" name="currency_id[]" value="<%=currency.id%>" id="<%=currency.id%>"> </input>
          <!-- This will create the ids for currency that we can use in the route to get the form selection-->
       </p>
       <%end%>

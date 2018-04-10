@@ -9,9 +9,9 @@
     <nav>
     </nav>
     <div class="row">
-      <form action="/show" method="post" name="new_task">
+      <form action="/delete" method="post" >
         <% @crypto.each do |currency, price|%>
-          <p> Currency Name: <%=currency.name%> Currency Price: $ <%=currency.price%> </p>
+          <p> Currency Name:<%=currency.name%> Currency Price: $ <%=currency.price%> <input type="checkbox" name="currency_id[]" value="<%=currency.id%>" id="<%=currency.id%>"> </input> <input type="submit" name="" value="Remove">
         <%end%>
       </form>
     </div>
