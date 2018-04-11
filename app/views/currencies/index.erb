@@ -8,9 +8,9 @@
     <form action="/currencies/index" method="post" name="checkbox_form">
       <div class="bitcoin">
         <h1> Crypto Currency to List</h1>
-        <% @crypto.each do |currency,price| %>
+        <% @currency.each do |currency,price| %>
         <div class="checkbox">
-           Currency Name: <%= currency.name %> Currency Price: <%= currency.price %> <input type="checkbox" name="crypto_currency[]" id="crypto_id">
+           Currency Name: <%= currency.name %> Currency Price: <%= currency.price %> 
         </div>
         <% end %>
         <br></br>
