@@ -7,7 +7,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
-  <title>SinatraCryptoAppp</title>
+  <title>Crypto Market</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -18,7 +18,6 @@
     <nav>
       <% if logged_in? %>
         <p>Welcome, <%=current_user.username %></p><br>
-        <button type="button" name="button"><a href="/logout">Log Out</a></button>
       <% else %>
         <h3>Welcome to my Sinatra Project</h3>
         <button type="button" name="button"><a href="/signup">Sign Up</a></button>

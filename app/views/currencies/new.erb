@@ -5,13 +5,19 @@
     <title></title>
   </head>
   <body>
+    <nav>
+      <button type="button" name="button"><a href="/logout">Log Out</a></button>
+      <button type="button" name="button"><a href="/currencies/id">Holdings</a></button>
+    </nav>
+    <h2>Add to List</h2>
     <form class="" action="/currencies" method="post">
       <!-- iterating over the currency array from the seed database-->
       <% Currency.all.each do |currency| %>
-      <p>  Currency Price: <%=currency.name%> Currency Price: $
-         <%=currency.price%> <input type="checkbox" name="currency[]" value="<%=currency.id%>" id="<%=currency.id%>"> </input>
-         <!-- This will create the ids for currency that we can use in the route to get the form selection-->
-      </p>
+        <p>
+          Currency Price: <%=currency.name%> Currency Price: $
+          <%=currency.price%> <input type="checkbox" name="currency[]" value="<%=currency.id%>" id="<%=currency.id%>"> </input>
+          <!-- This will create the id for currency that we can use in the route to get route with id-->
+        </p>
       <%end%>
       <button type="submit" name="" value="add"> Add to List </button>
     </form>

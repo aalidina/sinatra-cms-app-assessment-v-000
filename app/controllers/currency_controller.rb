@@ -20,17 +20,22 @@ class CurrencyController < ApplicationController
     @currency = Currency.all
     @crypto = Currency.create(:name => params[:name], :price => params[:content])
       @crypto = @currency.find_by(params[:currency])
+      @crypto.save
     #Searching for the currency by using the id number from @currency
      redirect to "/currencies/#{@crypto.id}"
      #redirect to show route to show user the selection on show #page
   end
 
   get '/currencies/:id' do #displays one currency based on ID in the url
-    @currency = Currency.all # getting all the currency from seed
-    @crypto = @currency.find_by(params[:id])
-    #getting the currency by id number
-     erb :'/currencies/show'
-     #rendering the show page to display user selection
+    if logged_in?
+      @currency = Currency.all # getting all the currency from seed
+      @crypto = @currency.find_by(params[:id])
+      #getting the currency by id number
+       erb :'/currencies/show'
+       #rendering the show page to display user selection
+    else
+     rediect '/'
+    end
   end
 
 
@@ -48,10 +53,14 @@ class CurrencyController < ApplicationController
   # end
 
   delete '/currencies/:id/delete' do #delete action
-    @currency = Currency.all
-    @crypto = @currency.find(params[:id])
-    @crypto.delete
-    redirect to '/currencies/new'
+    if logged_in?
+      @currency = Currency.all
+      @crypto = @currency.find(params[:id])
+      @crypto.delete
+      redirect to '/currencies/new'
+    else
+      redirect '/'
+    end
   end
 
 
