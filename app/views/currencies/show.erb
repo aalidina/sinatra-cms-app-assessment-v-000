@@ -10,7 +10,10 @@
     </nav>
     <div class="row">
       <form action="/currencies/<%= @crypto.id %>" method="post" >
-          <p> Currency Name:<%=@crypto.name%> Currency Price: $ <%=@crypto.price%> 
+        <input id="hidden" type="hidden" name="_method" value="delete">
+          <p> Currency Name:<%=@crypto.name%> Currency Price: $ <%=@crypto.price%>
+            <br><br>
+            <input type="submit" value="delete">
       </form>
     </div>
   </body>

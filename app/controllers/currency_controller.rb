@@ -45,9 +45,16 @@ class CurrencyController < ApplicationController
     erb :'/currencies/edit'
   end
 
-  delete '/currencies/:id/delete' do #delete action
+  patch '/currencies/:id' do #edit action
+    @currency = Currency.all
+    @crypto = @currency.find_by(params[:id])
+  redirect to "/currencies/#{@crypto.id}"
+end
+
+  delete '/currencies/:id' do #delete action
     @currency = Currency.all
     @crypto = @currency.find(params[:id])
+    @crypto.delete
     redirect to '/currencies/new'
   end
 

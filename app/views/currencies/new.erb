@@ -7,7 +7,7 @@
   <body>
     <form class="" action="/currencies" method="post">
       <!-- iterating over the currency array from the seed database-->
-      <% @currency.each do |currency| %>
+      <% Currency.all.each do |currency| %>
       <p>  Currency Price: <%=currency.name%> Currency Price: $
          <%=currency.price%> <input type="checkbox" name="currency[]" value="<%=currency.id%>" id="<%=currency.id%>"> </input>
          <!-- This will create the ids for currency that we can use in the route to get the form selection-->
