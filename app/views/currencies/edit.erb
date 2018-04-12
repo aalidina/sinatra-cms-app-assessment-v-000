@@ -6,10 +6,10 @@
   </head>
   <body>
     <h1>Welcome to Edit</h1>
-    <form action="/currencies/<%= @crypto.id %>" method="post" >
+    <form action="/currencies/<%=@crypto.id %>/delete" method="post" >
       <input id="hidden" type="hidden" name="_method" value="delete">
         <p> Currency Name:<%=@crypto.name%> Currency Price: $ <%=@crypto.price%><br><br>
-          <input type="submit" value="delete"> <!-- delete the currency-->
+          <input type="submit" value="Delete"> <!-- delete the currency-->
     </form>
   </body>
 </html>

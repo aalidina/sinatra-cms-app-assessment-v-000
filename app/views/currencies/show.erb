@@ -8,13 +8,11 @@
     <h1>Currency Holding</h1>
     <nav>
     </nav>
-    <div class="row">
-      <form action="/currencies/<%= @crypto.id %>" method="post" >
+      <form action="/currencies/<%= @crypto.id %>/delete" method="post" >
         <input id="hidden" type="hidden" name="_method" value="delete">
-          <p> Currency Name:<%=@crypto.name%> Currency Price: $ <%=@crypto.price%>
+          <p> Currency Name:<%=@crypto.name%> Currency Price: $ <%=@crypto.price%></p>
             <br><br>
-            <input type="submit" value="delete">
+            <input type="submit" value="Delete">
       </form>
-    </div>
   </body>
 </html>

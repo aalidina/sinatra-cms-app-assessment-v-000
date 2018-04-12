@@ -33,25 +33,21 @@ class CurrencyController < ApplicationController
      #rendering the show page to display user selection
   end
 
-  get '/show' do # show users selection
-    @currency = Currency.all
-    @crypto = @currency.find_by(params[:id])
-    erb :'/currencies/show'
-  end
 
-  get '/currencies/:id/edit' do  #load edit form
-    @currency = Currency.all
-    @crypto = @currency.find_by(params[:id])
-    erb :'/currencies/edit'
-  end
+  # get '/currencies/:id/edit' do  #load edit form
+  #   @currency = Currency.all
+  #   @crypto = @currency.find_by(params[:id])
+  #   erb :'/currencies/edit'
+  # end
 
-  patch '/currencies/:id' do #edit action
-    @currency = Currency.all
-    @crypto = @currency.find_by(params[:id])
-  redirect to "/currencies/#{@crypto.id}"
-end
+  # patch '/currencies/:id/edit' do #edit action
+  #   binding.pry
+  #   @currency = Currency.all
+  #   @crypto = @currency.find_by(params[:id])
+  #   redirect to "/currencies/#{@crypto.id}"
+  # end
 
-  delete '/currencies/:id' do #delete action
+  delete '/currencies/:id/delete' do #delete action
     @currency = Currency.all
     @crypto = @currency.find(params[:id])
     @crypto.delete
