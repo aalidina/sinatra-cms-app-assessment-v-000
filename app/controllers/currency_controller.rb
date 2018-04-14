@@ -17,22 +17,23 @@ class CurrencyController < ApplicationController
   end
 
   post '/currencies' do #creates new currencies
-    @currency = Currency.all
-    @crypto = Currency.create(:name => params[:name], :price => params[:content])
-      @crypto = @currency.find_by(params[:currency])
-      @crypto.save
+    @cryptos = params[:currency].collect do |t|
+      Currency.find_by(id: t)
+    end
+
+    # @crypto = Currency.create(:name => params[:name], :price => params[:content])
+      # @crypto = Currency.find_by(params[:currency])
+      # @crypto.save
     #Searching for the currency by using the id number from @currency
-     redirect to "/currencies/#{@crypto.id}"
+    #  redirect to "/currencies"
      #redirect to show route to show user the selection on show #page
+    erb :'/currencies/list'
   end
 
   get '/currencies/:id' do #displays one currency based on ID in the url
     if logged_in?
-      @currency = Currency.all # getting all the currency from seed
-      @crypto = @currency.find_by(params[:id])
-      #getting the currency by id number
-       erb :'/currencies/show'
-       #rendering the show page to display user selection
+      @crypto = Currency.find_by(params[:id]) #getting the currency by id number
+      erb :'/currencies/show' #rendering the show page to display user selection
     else
      rediect '/'
     end

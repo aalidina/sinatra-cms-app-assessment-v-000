@@ -11,12 +11,13 @@
       <button type="button" name="button"><a href="/logout">Sign Out</a></button>
     </nav>
     <h1>Currency Holding</h1>
-    <!-- /currencies/<%= @crypto.id %>/delete will redirect to delete route-->
-      <form action="/currencies/<%=@crypto.id %>/delete" method="post" >
+    <% @cryptos.each do |crypto| %>
+      <form action="/currencies/<%= crypto.id %>/delete" method="post" >
         <input id="hidden" type="hidden" name="_method" value="delete">
-        <p> Currency Name:<%=@crypto.name%> Currency Price: $ <%=@crypto.price%></p>
-        <br><br>
+        <p> Currency Name:<%=crypto.name%> Currency Price: $ <%=crypto.price%>
         <input type="submit" value="Delete"> <!-- delete the currency-->
+        </p>
       </form>
+    <% end %>
   </body>
 </html>
