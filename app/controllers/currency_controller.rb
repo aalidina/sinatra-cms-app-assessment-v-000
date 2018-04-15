@@ -11,7 +11,7 @@ class CurrencyController < ApplicationController
     erb :'/currencies/index'
   end
 
-  get '/currencies/new' do #displays create currency form
+  get '/new' do #displays create currency form
     @currency = Currency.all
     erb :'currencies/new'
   end
@@ -30,7 +30,7 @@ class CurrencyController < ApplicationController
     erb :'/currencies/list'
   end
 
-  get '/currencies/:id' do #displays one currency based on ID in the url
+  get '/:id' do #displays one currency based on ID in the url
     if logged_in?
       @crypto = Currency.find_by(params[:id]) #getting the currency by id number
       erb :'/currencies/show' #rendering the show page to display user selection

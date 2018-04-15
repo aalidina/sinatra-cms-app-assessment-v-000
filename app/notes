@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Crypto Currency</title>
+  </head>
+  <body>
+    <nav>
+      <button type="button" name="button"><a href="/currencies/new">Currency List</a></button>
+      <button type="button" name="button"><a href="/currencies/id">One Currency</a></button>
+      <button type="button" name="button"><a href="/logout">Sign Out</a></button>
+    </nav>
+    <h1>Currency Holding</h1>
+    <% @cryptos.each do |crypto| %>
+      <form action="/currencies/<%= crypto.id %>/delete" method="post" >
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <p> Currency Name:<%=crypto.name%> Currency Price: $ <%=crypto.price%>
+        <input type="submit" value="Delete"> <!-- delete the currency-->
+        </p>
+      </form>
+    <% end %>
+  </body>
+</html>

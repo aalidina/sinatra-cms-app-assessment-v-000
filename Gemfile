@@ -11,7 +11,8 @@ gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'sqlite3'
 gem 'thin'
 gem 'tux'
-gem 'bcrypt'
+gem 'bcrypt', '~> 3.1.7'
+gem 'sinatra-bootstrap', :require => 'sinatra/bootstrap'
 
 group :test do
   gem 'rspec'

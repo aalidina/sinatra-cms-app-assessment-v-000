@@ -2,7 +2,6 @@ require 'pry'
 class UserController < ApplicationController
 
 
-
   get '/login' do
     if logged_in?
       redirect to '/currencies/new'
@@ -15,7 +14,7 @@ class UserController < ApplicationController
     @user = User.find_by(:username => params[:username])
     if @user && @user.authenticate(params[:password])
       session[:id] = @user.id
-      redirect '/currencies/new'
+      redirect '/new'
     else
       redirect to '/login'
     end
@@ -23,7 +22,7 @@ class UserController < ApplicationController
 
   get '/signup' do
     if logged_in?
-      redirect to '/currencies/new'
+      redirect to '/new'
     else
       erb :'/users/signup'
     end
@@ -37,7 +36,7 @@ we still access the attribute of password  because of the has_secure_password
 
     if @user.save && @user.username != "" && @user.email != ""
       session[:id] = @user.id
-      redirect to '/currencies/new'
+      redirect to '/new'
     else
       session[:error] = "Your details were not saved to our database. Please try again."
       redirect to '/signup'

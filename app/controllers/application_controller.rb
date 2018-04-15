@@ -14,6 +14,11 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
+  get '/welcome' do #home route or default route
+    @currency = Currency.all
+    erb :welcome
+  end
+
   helpers do
 
     def current_user
