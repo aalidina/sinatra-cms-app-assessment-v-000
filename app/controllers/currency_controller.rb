@@ -8,7 +8,7 @@ class CurrencyController < ApplicationController
 
   get '/currencies' do #index page to display all currency
     @currency = Currency.all
-    erb :'/currencies/index'
+    erb :'/index'
   end
 
   get '/new' do #displays create currency form
@@ -55,10 +55,9 @@ class CurrencyController < ApplicationController
 
   delete '/currencies/:id/delete' do #delete action
     if logged_in?
-      @currency = Currency.all
-      @crypto = @currency.find(params[:id])
+      @crypto = Currency.find(params[:id])
       @crypto.delete
-      redirect to '/currencies/new'
+      redirect to '/new'
     else
       redirect '/'
     end
