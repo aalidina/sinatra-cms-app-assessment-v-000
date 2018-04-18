@@ -10,8 +10,12 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do #home route or default route
-    @currency = Currency.all
-    erb :index
+    if logged_in?
+      @currency = Currency.all
+      erb :index
+    else
+      redirect to '/welcome'
+    end
   end
 
   get '/welcome' do #home route or default route

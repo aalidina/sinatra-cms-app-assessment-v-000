@@ -2,10 +2,6 @@ require 'pry'
 
 class CurrencyController < ApplicationController
 
-  # get '/currencies/index' do
-  #   erb :'/currencies/index'
-  # end
-
   get '/currencies' do #index page to display all currency
     @currency = Currency.all
     erb :'/index'
@@ -20,13 +16,6 @@ class CurrencyController < ApplicationController
     @cryptos = params[:currency].collect do |t|
       Currency.find_by(id: t)
     end
-
-    # @crypto = Currency.create(:name => params[:name], :price => params[:content])
-      # @crypto = Currency.find_by(params[:currency])
-      # @crypto.save
-    #Searching for the currency by using the id number from @currency
-    #  redirect to "/currencies"
-     #redirect to show route to show user the selection on show #page
     erb :'/currencies/list'
   end
 
