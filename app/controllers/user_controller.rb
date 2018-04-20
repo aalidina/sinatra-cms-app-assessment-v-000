@@ -14,7 +14,7 @@ class UserController < ApplicationController
     @user = User.find_by(:username => params[:username])
     if @user && @user.authenticate(params[:password])
       session[:id] = @user.id
-      redirect '/new'
+      redirect '/currencies/new'
     else
       redirect to '/login'
     end
@@ -22,7 +22,7 @@ class UserController < ApplicationController
 
   get '/signup' do
     if logged_in?
-      redirect to '/new'
+      redirect to '/currencies/new'
     else
       erb :'/users/signup'
     end
@@ -36,7 +36,7 @@ we still access the attribute of password  because of the has_secure_password
 
     if @user.save && @user.username != "" && @user.email != ""
       session[:id] = @user.id
-      redirect to '/new'
+      redirect to '/currencies/new'
     else
       session[:error] = "Your details were not saved to our database. Please try again."
       redirect to '/signup'

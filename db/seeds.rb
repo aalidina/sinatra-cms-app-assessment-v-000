@@ -1,6 +1,6 @@
 Currency.destroy_all
 #creating and saving two new instances of the Currency class
-
+aly = Owner.create(name: "Aly")
 Currency.create(name: "Bitcoin", price: "6,975.13")
 Currency.create(name: "Etherium", price: "394")
 Currency.create(name: "Neo", price: "51.10")

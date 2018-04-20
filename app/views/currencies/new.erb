@@ -25,7 +25,10 @@
               <a class="nav-link js-scroll-trigger" href="/logout">Sign Out</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/id">Show</a>
+              <a class="nav-link js-scroll-trigger" href="/currencies/">Show</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/currencies/:id/edit">Edit</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
@@ -62,16 +65,11 @@
             <h2>Add to List</h2>
             <form class="" action="/currencies" method="post">
               <!-- iterating over the currency array from the seed database-->
-              <% Currency.all.each do |currency| %>
-              <p>
               <label for="">Currency Price:</label>
-              <label for=""> <%=currency.name%></label>
+              <input type="text" name="currency[name]" id="currency.id[]" value=""> <br>
               <label for="">Currency Price: $</label>
-              <label for=""><%=currency.price%></label>
-              <input type="checkbox" name="currency[]" value="<%=currency.id%>" id="<%=currency.id%>"> </input>
+              <input type="text" name="currency[price]" id="currency_price"><br>
               <!-- This will create the id for currency that we can use in the route to get route with id-->
-              </p>
-              <%end%><br>
               <button class="btn btn-outline-success" type="submit" name="" value="add"> Add to List </button>
             </form>
           </div>
@@ -123,11 +121,11 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>

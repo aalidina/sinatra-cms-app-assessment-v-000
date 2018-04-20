@@ -1,24 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Crypto Currency</title>
-  </head>
-  <body>
-    <nav>
-      <button type="button" name="button"><a href="/logout">Sign Out</a></button>
-    </nav>
-    <form action="/currencies/index" method="post" name="checkbox_form">
-      <div class="bitcoin">
-        <h1> Crypto Currency to List</h1>
-        <% @currency.each do |currency,price| %>
-        <div class="checkbox">
-           Currency Name: <%= currency.name %> Currency Price: <%= currency.price %>
-        </div>
-        <% end %>
-      </div>
-
-    </form>
-
-  </body>
-</html>
+<a href="/currencies/new"><h2>Add New Currency</h2></a>
+<br><br>
+<h3>Currencies</h3>
+<ul>
+  <% Currency.all.each do |currency| %>
+    <li><%= currency.name %> <%= currency.price %></li>
+  <% end %>
+</ul>
