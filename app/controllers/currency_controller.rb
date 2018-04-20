@@ -20,10 +20,10 @@ class CurrencyController < ApplicationController
   end
 
   post '/currencies' do #creates new currencies
-    @crypto = Currency.create(name: params[:name], price: params[:price], id: params[:id])
-    if !params["currency"]["name"].empty?
+    @crypto = Currency.create(name: params[:name], price: params[:price], id: params[:id], user: user_id)
+    if !params["currency"].empty?
       @crypto = Currency.create(params["currency"])
-      binding.pry
+      @crypto.save
     end
     redirect '/currencies/#{@crypto.id}'
   end
@@ -39,17 +39,27 @@ class CurrencyController < ApplicationController
 
   get '/currencies/:id/edit' do  #load edit form
     @crypto = Currency.all.find_by("id")
-    erb :'/currencies/edit'
+    if logged_in?
+      erb :'/currencies/edit'
+    else
+      redirect '/login'
+    end
   end
 
-  # patch '/currencies/:id/edit' do #edit action
-  #   binding.pry
-  #   @currency = Currency.all
-  #   @crypto = @currency.find_by(params[:id])
-  #   redirect to "/currencies/#{@crypto.id}"
-  # end
+  patch '/currencies/:id/edit' do #edit action
+    if params["currency"].empty?
+       redirect to "/currencies/#{params[:id]}/edit"
+     else
+       @crypto = Currency.all.find_by(params[:id])
+       binding.pry
+       @crypto.update(:currency params[:currency])
+
+       redirect to "/tweets/#{@tweet.id}"
+     end
+  end
 
   delete '/currencies/:id/delete' do #delete action
+    # crypto = current_user.tweets.find_by(id: params[:id])
     if logged_in?
       @crypto = Currency.all.find_by("id")
       @crypto.delete
