@@ -25,7 +25,7 @@
               <a class="nav-link js-scroll-trigger" href="/logout">Sign Out</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/currencies/">Show</a>
+              <a class="nav-link js-scroll-trigger" href="/currencies/:id">Show</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="/currencies/:id/edit">Edit</a>
@@ -64,13 +64,12 @@
           <div class="form-check">
             <h2>Add to List</h2>
             <form class="" action="/currencies" method="post">
-              <!-- iterating over the currency array from the seed database-->
+              <input type="hidden" name="<%=@current_user.username%>" value="<%=current_user.username%>" id="<%=current_user.id%>">
               <label for="">Currency Price:</label>
-              <input type="text" name="currency[name]" id="currency.id[]" value=""> <br>
+              <input type="text" name="currency[name]" id="currency_name"> <br>
               <label for="">Currency Price: $</label>
-              <input type="text" name="currency[price]" id="currency_price"><br>
-              <!-- This will create the id for currency that we can use in the route to get route with id-->
-              <button class="btn btn-outline-success" type="submit" name="" value="add"> Add to List </button>
+              <input type="text" name="currency[price]" id="#{@crypto.id}"><br>
+              <button class="btn btn-outline-success" type="submit" value="add"> Add to List </button>
             </form>
           </div>
         </div>

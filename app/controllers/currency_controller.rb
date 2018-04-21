@@ -20,17 +20,18 @@ class CurrencyController < ApplicationController
   end
 
   post '/currencies' do #creates new currencies
-    @crypto = Currency.create(name: params[:name], price: params[:price], id: params[:id], user: user_id)
-    if !params["currency"].empty?
-      @crypto = Currency.create(params["currency"])
+    #  @currency = Currency.create(name: params[:name], price: params[:price], id: params[:id], user_id: current_user.id)
+    @user = User.find_by_id(session[:user_id])
+    if !params["currency"]["name"].empty? || params["currency"]["price"].empty?
+      @crypto = Currency.create(name: params[:name], price: params[:price], user_id: current_user.id)
       @crypto.save
     end
-    redirect '/currencies/#{@crypto.id}'
+    redirect to "/currencies/:id"
   end
 
-  get '/currencies/' do #displays one currency based on ID in the url
+  get '/currencies/:id' do #displays one currency based on ID in the url
     if logged_in?
-      @crypto = Currency.find_by(params[:id]) #getting the currency by id number
+      @crypto = Currency.all.find_by("id") #getting the currency by id number
       erb :'/currencies/show' #rendering the show page to display user selection
     else
      redirect '/login'
@@ -38,7 +39,7 @@ class CurrencyController < ApplicationController
   end
 
   get '/currencies/:id/edit' do  #load edit form
-    @crypto = Currency.all.find_by("id")
+    @crypto = Currency.find_by("id")
     if logged_in?
       erb :'/currencies/edit'
     else
@@ -52,13 +53,13 @@ class CurrencyController < ApplicationController
      else
        @crypto = Currency.all.find_by(params[:id])
        binding.pry
-       @crypto.update(:currency params[:currency])
+       @crypto.update(currency: params[:currency])
 
-       redirect to "/tweets/#{@tweet.id}"
+       redirect to "/currencies/#{@crypto.id}"
      end
   end
 
-  delete '/currencies/:id/delete' do #delete action
+  post '/currencies/:id/delete' do #delete action
     # crypto = current_user.tweets.find_by(id: params[:id])
     if logged_in?
       @crypto = Currency.all.find_by("id")
@@ -71,3 +72,4 @@ class CurrencyController < ApplicationController
 
 
 end
+#cd labs/sinatra-cms-app-assessment-v-000
