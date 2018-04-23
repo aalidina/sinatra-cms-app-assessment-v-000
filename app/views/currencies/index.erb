@@ -1,8 +1,8 @@
 <a href="/currencies/new"><h2>Add New Currency</h2></a>
 <br><br>
 <h3>Currencies</h3>
-<ul>
+<div>
   <% Currency.all.each do |currency| %>
-    <li><%= currency.name %> <%= currency.price %></li>
+    <p>Currency Name: <%= currency.name %> Currency Price: <%= currency.price %></p>
   <% end %>
-</ul>
+</div>

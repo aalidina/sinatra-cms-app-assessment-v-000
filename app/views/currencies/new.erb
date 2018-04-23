@@ -64,11 +64,13 @@
           <div class="form-check">
             <h2>Add to List</h2>
             <form class="" action="/currencies" method="post">
-              <input type="hidden" name="<%=@current_user.username%>" value="<%=current_user.username%>" id="<%=current_user.id%>">
+              <input type="hidden" name="username" value="<%=current_user.username%>" id="current_user.id">
+            </form>
+            <form class="" action="/currencies" method="post">
               <label for="">Currency Price:</label>
               <input type="text" name="currency[name]" id="currency_name"> <br>
               <label for="">Currency Price: $</label>
-              <input type="text" name="currency[price]" id="#{@crypto.id}"><br>
+              <input type="text" name="currency[price]" id="currency_price"><br>
               <button class="btn btn-outline-success" type="submit" value="add"> Add to List </button>
             </form>
           </div>
