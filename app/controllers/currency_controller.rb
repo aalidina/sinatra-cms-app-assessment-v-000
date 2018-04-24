@@ -22,17 +22,16 @@ class CurrencyController < ApplicationController
 
   post '/currencies' do #creates new currencies
     @user = User.find_by_id(session[:id])
-    Currency.create(name: params[:name], price: params[:price], user_id: current_user.id)
+    # Currency.create(name: params[:name], price: params[:price], user_id: current_user.id)
     if !params[:currency].empty?
-      @crypto = Currency.all.create(params[:currency])
+      @crypto = Currency.all.create(name: params[:currency][:name], price: params[:currency][:price], user: current_user) # This matchs the hash I #created in the new submit form and its connecting user id with currency
     end
     redirect to "/currencies/:id"
   end
 
   get '/currencies/:id' do #displays one currency based on ID in the url
     if logged_in?
-      @crypto = Currency.all.find_by("id") #getting the currency by id number
-      binding.pry
+      @crypto = Currency.all.find_by("user_id") #getting the currency by #current_user id number
       erb :'/currencies/show' #rendering the show page to display user selection
     else
      redirect '/login'
@@ -40,8 +39,8 @@ class CurrencyController < ApplicationController
   end
 
   get '/currencies/:id/edit' do  #load edit form
-    @crypto = Currency.find_by("id")
-    if logged_in?
+    @crypto = Currency.find_by("user_id") # find currency by user's id
+    if logged_in? && @crypto.user_id == current_user.id
       erb :'/currencies/edit'
     else
       redirect '/login'
@@ -50,20 +49,19 @@ class CurrencyController < ApplicationController
 
   patch '/currencies/:id/edit' do #edit action
     if params["currency"].empty?
-       redirect to "/currencies/#{params[:id]}/edit"
+       redirect to "/currencies/:id/edit"
      else
        @crypto = Currency.all.find_by(params[:id])
-       binding.pry
-       @crypto.update(currency: params[:currency])
+       @crypto.update(name: params[:currency][:name], price: params[:currency][:price])
 
-       redirect to "/currencies/#{@crypto.id}"
+       redirect to "/currencies/:id"
      end
   end
 
   post '/currencies/:id/delete' do #delete action
     # crypto = current_user.tweets.find_by(id: params[:id])
     if logged_in?
-      @crypto = Currency.all.find_by("id")
+      @crypto = Currency.all.find_by("user_id")
       @crypto.delete
       redirect to '/currencies/new'
     else

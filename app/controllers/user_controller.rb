@@ -29,10 +29,10 @@ class UserController < ApplicationController
   end
 
   post '/signup' do
-=begin
-we still access the attribute of password  because of the has_secure_password
-=end
-    @user = User.new(username: params[:username], password: params[:password], email:  params[:email])
+
+# we still access the attribute of password  because of the has_secure_password
+
+    @user = User.new(:username => params[:username], :password => params[:password], :email => params[:email])
 
     if @user.save && @user.username != "" && @user.email != ""
       session[:id] = @user.id
@@ -50,6 +50,8 @@ we still access the attribute of password  because of the has_secure_password
     if logged_in?
       session.clear
       redirect to '/login'
+    else
+       redirect to '/'
     end
   end
 

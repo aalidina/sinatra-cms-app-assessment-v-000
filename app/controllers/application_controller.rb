@@ -1,5 +1,5 @@
-require 'pry'
 require './config/environment'
+require 'pry'
 class ApplicationController < Sinatra::Base
 
   configure do #built-in settings that control whether features are enabled or #not.

@@ -62,10 +62,10 @@
       <div class="container">
         <div class="col-lg-8 mx-auto">
             <h2>Create New</h2>
-            <form class="" action="/currencies" method="post">
+            <form action="/currencies" method="post">
               <input type="hidden" name="username" value="<%=current_user.username%>" id="<%=current_user.id%>">
               <label for="">Currency Name:</label>
-              <input type="text" name="currency[name]" id="currency_name"> <br>
+              <input type="text" name="currency[name]" id="currency_name"><br>
               <label for="">Currency Price: </label>
               <input type="text" name="currency[price]" id="currency_price"><br><br>
               <button class="btn btn-outline-success" type="submit" value="add"> Add to List </button>
