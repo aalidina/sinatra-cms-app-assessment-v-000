@@ -4,7 +4,8 @@ class CurrencyController < ApplicationController
 
   get '/currencies' do #index page to display all currency
     if logged_in?
-      @user = User.find_by_id(session[:user_id])
+      @user = User.find_by_id(session[:id])
+
       erb :'/currencies/index'
     else
     redirect to '/login'
@@ -20,11 +21,10 @@ class CurrencyController < ApplicationController
   end
 
   post '/currencies' do #creates new currencies
-    @user = User.find_by_id(session[:user_id])
-    Currency.create(name: params[:name], price: params[:price], id: params[:id], user: current_user)
+    @user = User.find_by_id(session[:id])
+    Currency.create(name: params[:name], price: params[:price], user_id: current_user.id)
     if !params[:currency].empty?
       @crypto = Currency.all.create(params[:currency])
-      binding.pry
     end
     redirect to "/currencies/:id"
   end
@@ -32,7 +32,7 @@ class CurrencyController < ApplicationController
   get '/currencies/:id' do #displays one currency based on ID in the url
     if logged_in?
       @crypto = Currency.all.find_by("id") #getting the currency by id number
-      pry
+      binding.pry
       erb :'/currencies/show' #rendering the show page to display user selection
     else
      redirect '/login'

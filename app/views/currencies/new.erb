@@ -61,19 +61,15 @@
     <section id="download" class="download-section content-section text-center">
       <div class="container">
         <div class="col-lg-8 mx-auto">
-          <div class="form-check">
-            <h2>Add to List</h2>
+            <h2>Create New</h2>
             <form class="" action="/currencies" method="post">
-              <input type="hidden" name="username" value="<%=current_user.username%>" id="current_user.id">
-            </form>
-            <form class="" action="/currencies" method="post">
-              <label for="">Currency Price:</label>
+              <input type="hidden" name="username" value="<%=current_user.username%>" id="<%=current_user.id%>">
+              <label for="">Currency Name:</label>
               <input type="text" name="currency[name]" id="currency_name"> <br>
-              <label for="">Currency Price: $</label>
-              <input type="text" name="currency[price]" id="currency_price"><br>
+              <label for="">Currency Price: </label>
+              <input type="text" name="currency[price]" id="currency_price"><br><br>
               <button class="btn btn-outline-success" type="submit" value="add"> Add to List </button>
             </form>
-          </div>
         </div>
       </div>
     </section>
@@ -120,20 +116,6 @@
         <p>Copyright &copy; Krypto 2018</p>
       </div>
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="js/grayscale.min.js"></script>
-
   </body>
 
 </html>

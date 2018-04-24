@@ -63,7 +63,7 @@
         <div class="col-lg-8 mx-auto">
           <h1>Current Holding</h1>
           <!-- /currencies/<%= @crypto.id %>/delete will redirect to delete route-->
-            <form action="/currencies/<%=@crypto.id%>/delete" method="post" >
+            <form action="/currencies/:id/delete" method="post" >
               <p>
                 <label for="">Currency Name:</label>
                 <label for=""><%=@crypto.name%></label>
