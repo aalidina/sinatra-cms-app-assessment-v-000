@@ -13,6 +13,7 @@ gem 'thin'
 gem 'tux'
 gem 'bcrypt', '~> 3.1.7'
 gem 'sinatra-bootstrap', :require => 'sinatra/bootstrap'
+gem 'sinatra-flash'
 
 group :test do
   gem 'rspec'

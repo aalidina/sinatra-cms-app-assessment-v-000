@@ -92,6 +92,8 @@ GEM
     sinatra-bootstrap (0.6.1)
       sinatra (>= 1.0)
       sinatra-outputbuffer
+    sinatra-flash (0.3.0)
+      sinatra (>= 1.0.0)
     sinatra-outputbuffer (0.1.0)
       sinatra (>= 1.0.a)
     slop (3.6.0)
@@ -130,6 +132,7 @@ DEPENDENCIES
   sinatra
   sinatra-activerecord
   sinatra-bootstrap
+  sinatra-flash
   sqlite3
   thin
   tux
