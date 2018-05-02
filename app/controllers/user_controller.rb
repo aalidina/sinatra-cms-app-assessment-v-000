@@ -29,7 +29,6 @@ class UserController < ApplicationController
   end
 
   post '/signup' do
-# we still access the attribute of password  because of the has_secure_password
     @user = User.new(:username => params[:username], :password => params[:password], :email => params[:email])
 
     if User.find_by(username: params[:username])
