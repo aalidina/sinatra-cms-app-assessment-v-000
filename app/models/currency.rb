@@ -1,5 +1,5 @@
 class Currency < ActiveRecord::Base
-  validates_presence_of :name
-  validates_presence_of :price
+  validates :name, presence: true
+  validates :price, presence: true
   belongs_to :user
 end

@@ -22,9 +22,8 @@ class CurrencyController < ApplicationController
 
   post '/currencies' do #creates new currencies
     @user = User.find_by_id(session[:id])
-    # Currency.create(name: params[:name], price: params[:price], user_id: current_user.id)
     if !params[:currency].empty?
-      @crypto = Currency.create(name: params[:currency][:name], price: params[:currency][:price], user: current_user) # This matchs the hash I #created in the new submit form and its connecting user id with currency
+      @crypto = Currency.create(name: params[:currency][:name], price: params[:currency][:price], user: current_user) # This matches the hash I #created in the new submit form and its #connecting user id with currency
     end
     redirect to "/currencies/#{@crypto.id}"
   end
@@ -39,7 +38,7 @@ class CurrencyController < ApplicationController
   end
 
   get '/currencies/:id/edit' do  #load edit form
-    @crypto = Currency.find_by(id: params[:id]) # find currency by user's id
+    @crypto = Currency.find_by(id: params[:id]) # find currency by id
     if logged_in? && @crypto.user_id == current_user.id
       erb :'/currencies/edit'
     else
@@ -60,7 +59,7 @@ class CurrencyController < ApplicationController
 
   post '/currencies/:id/delete' do #delete action
     if logged_in?
-        @crypto = Currency.find_by(params[:id])
+      @crypto = Currency.find_by(params[:id])
       @crypto.delete
       redirect to '/currencies/new'
     else
