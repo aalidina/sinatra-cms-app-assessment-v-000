@@ -3,10 +3,8 @@ require 'pry'
 class CurrencyController < ApplicationController
 
   get '/currencies' do #index page to display all currency
-    if logged_in?
-      @user = User.find_by_id(session[:id])
-
-      erb :'/currencies/index'
+    if logged_in?#checking to see user is logged in
+      erb :'/currencies/index' # redirect to index page
     else
     redirect to '/login'
     end

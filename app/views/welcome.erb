@@ -22,10 +22,13 @@
               <a class="nav-link js-scroll-trigger" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/login">Sign In</a>
+              <a class="nav-link js-scroll-trigger" href="/logout">Sign Out</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/signup">Sign Up</a>
+              <a class="nav-link js-scroll-trigger" href="/currencies/new">Add to List</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/currencies/<%=@crypto.id%>/edit">Edit</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
@@ -44,8 +47,6 @@
               <h4 class="brand-heading">Krypto</h4>
               <p class="intro-text">A free, crypto currency platform
                 </p>
-              <a href="#about" class="btn btn-circle js-scroll-trigger">
-                <i class="fa fa-angle-double-down animated"></i>
               </a>
             </div>
           </div>
@@ -54,29 +55,18 @@
     </header>
 
     <!-- About Section -->
-    <section id="about" class="content-section text-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2>About Krypto </h2>
-            <p>Crypto Currency Market allows you to keep track of all your Crypto Currencies for free.
-          </div>
-        </div>
-      </div>
-    </section>
+
 
     <!-- Download Section -->
     <section id="download" class="download-section content-section text-center">
       <div class="container">
         <div class="col-lg-8 mx-auto">
-          <h2>Buy and sell digital currency</h2>
-          <p>Create your digital currency portfolio today</p>
-          <form class="" action="" method="post">
-            <div class="bitcoin">
-                <% @currency.each do |currency,price| %>
-                  <p>Currency Name: <%= currency.name %> Currency Price: $<%= currency.price %>
+          <h1>Current Holding</h1>
+              <p>
+                <% current_user.currencies.each do |currency| %>
+                  <p>Currency Name: <%= currency.name %> | Currency Price: <%= currency.price %></p>
                 <% end %>
-            </div>
+              </p>
         </div>
       </div>
     </section>
