@@ -19,16 +19,15 @@ class CurrencyController < ApplicationController
   end
 
   post '/currencies' do #creates new currencies
-    @user = User.find_by_id(session[:id])
     if !params[:currency].empty?
-      @crypto = Currency.create(name: params[:currency][:name], price: params[:currency][:price], user: current_user) # This matches the hash I #created in the new submit form and its #connecting user id with currency
+      @crypto = current_user.currencies.create(name: params[:currency][:name], price: params[:currency][:price]) # This matches the hash I #created in the new submit form and its #connecting user id with currency
     end
     redirect to "/currencies/#{@crypto.id}"
   end
 
   get '/currencies/:id' do #displays one currency based on ID in the url
     if logged_in?
-      @crypto = Currency.find_by(id: params[:id]) #getting the currency by #current_user id number
+      @crypto = current_user.currencies.find_by(id: params[:id]) #getting the currency by #current_user id number
       erb :'/currencies/show' #rendering the show page to display user selection
     else
      redirect '/login'
@@ -36,7 +35,7 @@ class CurrencyController < ApplicationController
   end
 
   get '/currencies/:id/edit' do  #load edit form
-    @crypto = Currency.find_by(id: params[:id]) # find currency by id
+    @crypto = current_user.currencies.find_by(id: params[:id]) # find currency by id
     if logged_in? && @crypto.user_id == current_user.id
       erb :'/currencies/edit'
     else
@@ -48,16 +47,15 @@ class CurrencyController < ApplicationController
     if params["currency"].empty?
        redirect to "/currencies/:id/edit"
      else
-       @crypto = Currency.find_by(params[:id])
+       @crypto = current_user.currencies.find_by(id: params[:id])
        @crypto.update(name: params[:currency][:name], price: params[:currency][:price])
-
-       redirect to "/currencies/:id"
+       redirect to "/currencies/#{@crypto.id}"
      end
   end
 
   post '/currencies/:id/delete' do #delete action
     if logged_in?
-      @crypto = Currency.find_by(params[:id])
+      @crypto = current_user.currencies.find_by(params[:id])
       @crypto.delete
       redirect to '/currencies/new'
     else

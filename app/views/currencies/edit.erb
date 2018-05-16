@@ -10,9 +10,9 @@
       <input id="hidden" type="hidden" name="_method" value="patch">
         <p>
           <label for="content">Currency Name:</label>
-          <input type="text" name="currency" value="<%= @crypto.name%>"><br>
+          <input type="text" name="currency[name]" value="<%= @crypto.name%>"><br>
           <label for="content">Currency Price:</label>
-          <input type="text" name="currency" value="<%= @crypto.price%>"><br>
+          <input type="text" name="currency[price]" value="<%= @crypto.price%>"><br>
           <input type="submit" value="submit">
         </p>
     </form>
