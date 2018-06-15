@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions # turns sessions on
     register Sinatra::Flash
-    set :session_secret, "password_security" #is an encryption key that will be #used to create a session_id
+    set :session_secret, "password_security" #uses bcrypt to encrypt the password so that its not in plan text. 
   end
 
   get '/' do #home route or default route

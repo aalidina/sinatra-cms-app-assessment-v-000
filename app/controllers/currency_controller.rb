@@ -25,9 +25,10 @@ class CurrencyController < ApplicationController
     redirect to "/currencies/#{@crypto.id}"
   end
 
-  get '/currencies/:id' do #displays one currency based on ID in the url
+  get '/currencies/:id' do #:id is dynamically generating a id
     if logged_in?
-      @crypto = current_user.currencies.find_by(id: params[:id]) #getting the currency by #current_user id number
+      #Finding the currency by the id number
+      @crypto = current_user.currencies.find_by(id: params[:id])
       erb :'/currencies/show' #rendering the show page to display user selection
     else
      redirect '/login'
